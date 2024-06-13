@@ -56,18 +56,20 @@ public:
 
 
 	void search(string element, Node*& parent, Node*& currentNode)
-	{
-		// this function searches the currentNode  of the specified node as well as the current node of its parent
+
+	{// this function searches the currentnode of the specified node as well as the current node of its parent
 		currentNode = ROOT;
 		parent = NULL;
-		while ((currentNode != NULL) && (currentNode->info != element)
+		while ((currentNode != NULL) && (currentNode->info != element))
 		{
 			parent = currentNode;
 			if (element < currentNode->info)
 				currentNode = currentNode->leftchild;
 			else
 				currentNode = currentNode->rightchild;
+
 		}
+
 	}
 
 	void inorder(Node* ptr)
@@ -119,3 +121,54 @@ public:
 };
 
 int main()
+{
+	BinaryTree x;
+	while (true)
+	{
+		cout << "\nMenu" << endl;
+		cout << "1. Implement insert operation" << endl;
+		cout << "2. Perform inorder traversal" << endl;
+		cout << "3. Perform preorder traversal" << endl;
+		cout << "4. Perform postorder traversal" << endl;
+		cout << "5. Exit" << endl;
+		cout << "\nEnter your choice (1-5) : ";
+
+		char ch;
+		cin >> ch;
+		cout << endl;
+
+		switch (ch)
+		{
+		case '1':
+		{
+			cout << "Enter a word: ";
+			string word;
+			cin >> word;
+			x.insert(word);
+			break;
+		}
+		case '2':
+		{
+			x.inorder(x.ROOT);
+			break;
+		}
+		case '3':
+		{
+			x.preorder(x.ROOT);
+			break;
+		}
+		case '4':
+		{
+			x.postorder(x.ROOT);
+			break;
+		}
+		case '5':
+			return 0;
+		default:
+		{
+			cout << "Invalid option" << endl;
+			break;
+		}
+		}
+	}
+}
